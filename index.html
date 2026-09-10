@@ -624,8 +624,19 @@
     <!-- STEAM GAMES SECTION -->
     <section class="games-section" id="games">
         <h2 class="section-title"><i class="fa-brands fa-steam" style="color: #087cff;"></i> Available Steam Accounts</h2>
-
         <div class="games-grid">
+            <!-- the witcher -->
+            <div class="game-card" onclick="openProtectedGameModal('the witcher', 'kingofthedead473', 'King4life33')">
+                <img src="https://image.api.playstation.com/vulcan/ap/rnd/202211/1412/5YlA3POEEpaAJsUq3eg6U8d6.png" alt="the witcher">
+                <div class="game-header">
+                    <h3>Grand Theft Auto V</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">30DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
             <!-- Stray -->
             <div class="game-card" onclick="openProtectedGameModal('Stray', 'ordinaryrhinoceros6358', 'a8ef32a3b76effb41!aZ')">
                 <img src="https://wallpaperaccess.com/full/8322547.jpg" alt="Stray">
@@ -690,7 +701,18 @@
                 </div>
                 <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
             </div>
-
+            <!-- it takes two -->
+            <div class="game-card" onclick="openProtectedGameModal('it takes two', '4osEWOp7H', 'tFMc6NoasPCjd7A')">
+                <img src="https://variety.com/wp-content/uploads/2022/01/It-Takes-Two-e1643647274115.jpg?w=1000&h=632&crop=1" alt="it takes two">
+                <div class="game-header">
+                    <h3>it takes two</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">5DT</span>
+                        <span class="promo-price-tag">Gratuit😍</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
             <!-- EA SPORTS FC 26 -->
             <div class="game-card" onclick="openProtectedGameModal('EA SPORTS FC 26', 'fnqt12324', 'Es9Ve1Db0Ez3')">
                 <img src="https://wallpaperaccess.com/full/22537619.jpg" alt="EA SPORTS FC 26">
@@ -1012,7 +1034,7 @@
     const GAME_PASSWORD = "1231233Y";
     let pendingGame = { title: '', user: '', pass: '' };
 
-    // DIMA YHEL POPUP MTA3 PASSWORD - MA FAMA HATTA SHAY Y’UNLOCKI DIRECT!
+    // UNLOCKI DIRECT!
     function openProtectedGameModal(title, user, pass) {
         pendingGame = { title, user, pass };
         document.getElementById('passModalGameTitle').innerText = title;
@@ -1020,7 +1042,7 @@
         document.getElementById('passwordModal').classList.add('active');
     }
 
-    // CHECK MTA3 EL PASSWORD 1231233Y
+    // CHECK PASSWORD 
     function verifyPassword() {
         const inputVal = document.getElementById('gamePassInput').value.trim();
         if (inputVal === GAME_PASSWORD) {
@@ -1047,13 +1069,13 @@
         document.getElementById('accountModal').classList.remove('active');
     }
 
-    // EL PROMO CODE YEN9ES FEL SOUM KHW
+    //  PROMO CODE 
     function applyPromoCode() {
         const codeInput = document.getElementById('promoInput').value.trim();
         if (codeInput === PROMO_CODE) {
             showToast("Promo Code Applied! Prices Discounted.");
             
-            // Yne9es fel-soum kahw
+            // REMISE
             document.querySelectorAll('.promo-price-tag').forEach(el => el.style.display = 'inline-block');
             document.querySelectorAll('.original-price-tag').forEach(el => el.classList.add('striked'));
         } else {
@@ -1088,7 +1110,7 @@
 const audio = document.getElementById('phonkAudio');
 audio.volume = 0.7;
 
-// Function bech tkhaddem el-ghneya
+// Function 
 function playAudio() {
     audio.play().then(() => {
         document.getElementById('musicText').innerText = "PLAYING ⚡";
@@ -1098,12 +1120,12 @@ function playAudio() {
     });
 }
 
-// 1. Njarbou nkhadmouha direct wa9t y-loady el-site
+// 1.  y-loady el-site
 window.addEventListener('DOMContentLoaded', () => {
     playAudio();
 });
 
-// 2. Ken el-browser bloquaha, awwel ma el-user yektek aw yn9er f-ayy blasa fel-page, tkhdem direct!
+// 2. AUTOOO
 window.addEventListener('click', () => {
     if (audio.paused) {
         playAudio();
