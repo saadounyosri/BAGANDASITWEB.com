@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEAM BAGANDA | Public Accounts Hub</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- html2canvas Library for Screenshots -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #080b10;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Glow Background Effects */
+        .glow-bg {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .top-left {
+            top: -50px;
+            left: -50px;
+            background: rgba(8, 124, 255, 0.3);
+        }
+
+        .bottom-right {
+            bottom: -50px;
+            right: -50px;
+            background: rgba(88, 101, 242, 0.25);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: rgba(14, 18, 27, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .crown {
+            font-size: 26px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #087cff;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        /* PROMO CODE SECTION IN NAVBAR */
+        .promo-container {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 10px;
+            padding: 3px 6px;
+        }
+
+        .promo-container input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #00ff88;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 5px 8px;
+            width: 120px;
+        }
+
+        .promo-container input::placeholder {
+            color: #a0aec0;
+            font-weight: 400;
+        }
+
+        .btn-apply-promo {
+            background: #00ff88;
+            color: #080b10;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-apply-promo:hover {
+            background: #55ffb0;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        /* BACKGROUND MUSIC PLAYER & VOLUME CONTROL */
+        .music-control-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 136, 0.08);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        .music-player-btn {
+            background: transparent;
+            border: none;
+            color: #00ff88;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            outline: none;
+        }
+
+        .volume-slider {
+            width: 70px;
+            accent-color: #00ff88;
+            cursor: pointer;
+        }
+
+        .btn-discord {
+            background: #5865F2;
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn-discord:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+        }
+
+        .btn-screenshot {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        .btn-screenshot:hover {
+            background: #00a182;
+            transform: translateY(-2px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: rgba(8, 124, 255, 0.15);
+            color: #087cff;
+            border: 1px solid rgba(8, 124, 255, 0.3);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, #087cff, #5865f2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: #a0aec0;
+            font-size: 18px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #087cff, #0052b4);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(8, 124, 255, 0.4);
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(8, 124, 255, 0.6);
+        }
+
+        /* GAMES SECTION */
+        .games-section {
+            padding: 40px 8% 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .game-card {
+            background: rgba(18, 24, 38, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 15px;
+            cursor: pointer;
+            transition: 0.3s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .game-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .game-card:hover img {
+            transform: scale(1.02);
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .original-price-tag {
+            background: rgba(255, 71, 87, 0.15);
+            border: 1px solid rgba(255, 71, 87, 0.4);
+            color: #ff4757;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+            transition: 0.3s ease;
+        }
+
+        .original-price-tag.striked {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+
+        .promo-price-tag {
+            background: rgba(0, 255, 136, 0.2);
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            font-size: 13px;
+            font-weight: 800;
+            padding: 2px 8px;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            display: none;
+            animation: priceGlow 1.5s infinite alternate;
+        }
+
+        @keyframes priceGlow {
+            0% { transform: scale(1); box-shadow: 0 0 5px rgba(0, 255, 136, 0.4); }
+            100% { transform: scale(1.08); box-shadow: 0 0 15px rgba(0, 255, 136, 0.9); }
+        }
+
+        .game-card h3 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #00ff88;
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.6), 0 0 20px rgba(0, 255, 136, 0.3);
+            display: inline-block;
+            animation: textPulse 2.5s infinite alternate ease-in-out;
+            transition: all 0.3s ease;
+        }
+
+        .game-card:hover h3 {
+            animation: textBounce 0.6s infinite alternate ease-in-out;
+            color: #55ffb0;
+            text-shadow: 0 0 12px rgba(0, 255, 136, 0.9), 0 0 25px rgba(0, 255, 136, 0.6);
+        }
+
+        @keyframes textPulse {
+            0% { text-shadow: 0 0 5px rgba(0, 255, 136, 0.5); transform: scale(1); }
+            100% { text-shadow: 0 0 15px rgba(0, 255, 136, 0.9), 0 0 25px rgba(0, 255, 136, 0.5); transform: scale(1.02); }
+        }
+
+        @keyframes textBounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-4px); }
+        }
+
+        .game-card span.status {
+            font-size: 12px;
+            color: #ff4757;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+
+        /* MODALS */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-box {
+            background: #0f1623;
+            border: 1px solid rgba(8, 124, 255, 0.3);
+            padding: 35px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(8, 124, 255, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 20px;
+            background: none; border: none;
+            color: #a0aec0; font-size: 26px;
+            cursor: pointer;
+        }
+
+        .close-btn:hover { color: white; }
+
+        .account-details {
+            background: #090e17;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .detail-row:last-child { margin-bottom: 0; }
+
+        .detail-row label {
+            font-size: 12px;
+            color: #a0aec0;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .detail-row .value {
+            font-weight: 600;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .btn-copy {
+            background: rgba(8, 124, 255, 0.2);
+            color: #087cff;
+            border: 1px solid rgba(8, 124, 255, 0.4);
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .btn-copy:hover {
+            background: #087cff;
+            color: white;
+        }
+
+        /* INPUT GROUPS FOR MODALS */
+        .input-group {
+            display: flex; flex-direction: column;
+            text-align: left; margin-bottom: 20px;
+        }
+
+        .input-group label {
+            font-size: 12px; font-weight: 600;
+            color: #a0aec0; text-transform: uppercase; margin-bottom: 8px;
+        }
+
+        .input-group input {
+            background: #090e17;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 14px; border-radius: 10px;
+            color: white; font-size: 15px; outline: none; transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #087cff;
+            box-shadow: 0 0 10px rgba(8, 124, 255, 0.3);
+        }
+
+        .btn-login-submit {
+            width: 100%; background: #087cff; color: white;
+            border: none; padding: 14px; border-radius: 10px;
+            font-weight: 600; font-size: 15px; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; transition: 0.3s;
+        }
+
+        .btn-login-submit:hover { background: #0052b4; }
+
+        /* TOAST */
+        .toast {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #087cff; color: white;
+            padding: 15px 25px; border-radius: 10px; font-weight: 600;
+            display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 25px rgba(8, 124, 255, 0.4);
+            transform: translateY(100px); opacity: 0;
+            transition: 0.4s ease; z-index: 10000;
+        }
+
+        .toast.show { transform: translateY(0); opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <!-- Background Glow Effects -->
+    <div class="glow-bg top-left"></div>
+    <div class="glow-bg bottom-right"></div>
+
+    <!-- DIRECT AUDIO ELEMENT FOR MUSIC -->
+    <audio id="phonkAudio" loop preload="auto">
+    <source src="https://c.top4top.io/m_3904nfyl01.mp3" type="audio/mpeg">
+</audio>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="crown">👑</span> STEAM BAGANDA <a href="https://discord.com/users/baganda_11" target="_blank" class="btn-contact-discord">
+    <i class="fa-brands fa-discord"></i> Contact Discord
+</a>
+        </div>
+        <nav class="nav-links">
+            <a href="#home" class="active">Home</a>
+            <a href="#games">Steam Games</a>
+            <a href="#about">About</a>
+        </nav>
+        <div class="nav-actions">
+            <!-- PROMO CODE BOX -->
+            <div class="promo-container">
+                <input type="text" id="promoInput" placeholder="Code Promo...">
+                <button class="btn-apply-promo" onclick="applyPromoCode()">Apply</button>
+            </div>
+
+            <!-- Music Player Toggle & Volume Control -->
+            <div class="music-control-wrapper">
+                <button class="music-player-btn" id="musicBtn" onclick="toggleMusic()">
+                    <i class="fa-solid fa-compact-disc" id="musicIcon"></i> <span id="musicText">PHONK ⚡</span>
+                </button>
+                <i class="fa-solid fa-volume-high" style="font-size: 11px; color: #00ff88;"></i>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70" oninput="changeVolume(this.value)">
+            </div>
+
+            <button class="btn-screenshot" onclick="takeScreenshot()">
+                <i class="fa-solid fa-camera"></i> Screenshot
+            </button>
+            <button class="btn-discord" onclick="openLoginModal()">
+                <i class="fa-brands fa-discord"></i> Login with Discord
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main class="hero" id="home">
+        <span class="badge">🔥 Free Public Steam Accounts</span>
+        <h1>Welcome to <span class="highlight">STEAM BAGANDA</span></h1>
+        <p>Get instant access to public Steam accounts for top games. Choose a game below and start playing!</p>
+
+        <div class="hero-buttons">
+            <a href="#games" class="btn-primary">Browse Games</a>
+        </div>
+    </main>
+
+    <!-- STEAM GAMES SECTION -->
+    <section class="games-section" id="games">
+        <h2 class="section-title"><i class="fa-brands fa-steam" style="color: #087cff;"></i> Available Steam Accounts</h2>
+
+        <div class="games-grid">
+            <!-- Stray -->
+            <div class="game-card" onclick="openProtectedGameModal('Stray', 'ordinaryrhinoceros6358', 'a8ef32a3b76effb41!aZ')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1332010/header.jpg" alt="Stray">
+                <div class="game-header">
+                    <h3>Stray</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">20DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Marvel’s Spider-Man Remastered -->
+            <div class="game-card" onclick="openProtectedGameModal('Marvel’s Spider-Man Remastered', 'ucuzoyuncunspiderman', 'Ucuzoyuncun.spider1')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1817070/header.jpg" alt="Marvel’s Spider-Man Remastered">
+                <div class="game-header">
+                    <h3>Spider-Man Remastered</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">30DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Resonance: A Plague Tale Legacy -->
+            <div class="game-card" onclick="openProtectedGameModal('A Plague Tale: Requiem', 'luciennecrase2007', 'Unix21000')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1182900/header.jpg" alt="A Plague Tale">
+                <div class="game-header">
+                    <h3>A Plague Tale: Requiem</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">25DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Horizon Forbidden West -->
+            <div class="game-card" onclick="openProtectedGameModal('Horizon Forbidden West', 'ForbiiiddenWest', 'Forbidden2$4567')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2420110/header.jpg" alt="Horizon Forbidden West">
+                <div class="game-header">
+                    <h3>Horizon Forbidden West</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">35DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Grand Theft Auto V -->
+            <div class="game-card" onclick="openProtectedGameModal('Grand Theft Auto V', 'dlgdlg9', '159?denis159?denis')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg" alt="Grand Theft Auto V">
+                <div class="game-header">
+                    <h3>Grand Theft Auto V</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">30DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- EA SPORTS FC 26 -->
+            <div class="game-card" onclick="openProtectedGameModal('EA SPORTS FC 26', 'fnqt12324', 'Es9Ve1Db0Ez3')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3547650/header.jpg" alt="EA SPORTS FC 26">
+                <div class="game-header">
+                    <h3>EA SPORTS FC 26</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">25DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- MECHA CHAMELEON -->
+            <div class="game-card" onclick="openProtectedGameModal('MECHA CHAMELEON', 'awaki_ln', 'Lenny1209')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/4704690/header.jpg" alt="MECHA CHAMELEON">
+                <div class="game-header">
+                    <h3>MECHA CHAMELEON</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">15DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- PEAK -->
+            <div class="game-card" onclick="openProtectedGameModal('PEAK', 'niwtz3ienk9', 'KpS1WfKHtI')">
+                <img src="https://store.steampowered.com/app/3527290/PEAK/" alt="PEAK">
+                <div class="game-header">
+                    <h3>PEAK</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">12DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Forza Horizon 6 -->
+            <div class="game-card" onclick="openProtectedGameModal('Forza Horizon 6', 'AJvRQpzAp', 'RM9Y8XSTWEVxplz')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2484580/header.jpg" alt="Forza Horizon 6">
+                <div class="game-header">
+                    <h3>Forza Horizon 6</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">30DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Call of Duty: Black Ops -->
+            <div class="game-card" onclick="openProtectedGameModal('Call of Duty: Black Ops', 'grnn607', '0501308070z-p')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/42700/header.jpg" alt="Call of Duty: Black Ops">
+                <div class="game-header">
+                    <h3>Call of Duty: Black Ops</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">20DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Assetto Corsa -->
+            <div class="game-card" onclick="openProtectedGameModal('Assetto Corsa', 'grnn607', '0501308070z-p')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/244210/header.jpg" alt="Assetto Corsa">
+                <div class="game-header">
+                    <h3>Assetto Corsa</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">15DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Rust -->
+            <div class="game-card" onclick="openProtectedGameModal('Rust', 'grnn607', '0501308070z-p')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/252490/header.jpg" alt="Rust">
+                <div class="game-header">
+                    <h3>Rust</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">20DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Dead by Daylight -->
+            <div class="game-card" onclick="openProtectedGameModal('Dead by Daylight', 'grnn607', '0501308070z-p')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/381210/header.jpg" alt="Dead by Daylight">
+                <div class="game-header">
+                    <h3>Dead by Daylight</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">15DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Wallpaper Engine -->
+            <div class="game-card" onclick="openProtectedGameModal('Wallpaper Engine', 'grnn607', '0501308070z-p')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/431960/header.jpg" alt="Wallpaper Engine">
+                <div class="game-header">
+                    <h3>Wallpaper Engine</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">10DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Pacify -->
+            <div class="game-card" onclick="openProtectedGameModal('Pacify', 'grnn607', '0501308070z-p')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/967050/header.jpg" alt="Pacify">
+                <div class="game-header">
+                    <h3>Pacify</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">10DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Hogwarts Legacy -->
+            <div class="game-card" onclick="openProtectedGameModal('Hogwarts Legacy', 'valdra911', '9FAXRzBUhB68Qdmd')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/990080/header.jpg" alt="Hogwarts Legacy">
+                <div class="game-header">
+                    <h3>Hogwarts Legacy</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">30DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- No Man's Sky -->
+            <div class="game-card" onclick="openProtectedGameModal('No Man\'s Sky', 'valdra911', '9FAXRzBUhB68Qdmd')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/275850/header.jpg" alt="No Man's Sky">
+                <div class="game-header">
+                    <h3>No Man's Sky</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">25DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- UNCHARTED™: Legacy of Thieves Collection -->
+            <div class="game-card" onclick="openProtectedGameModal('UNCHARTED™: Legacy of Thieves Collection', 'valdra911', '9FAXRzBUhB68Qdmd')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1659420/header.jpg" alt="UNCHARTED">
+                <div class="game-header">
+                    <h3>UNCHARTED™</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">25DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Phasmophobia -->
+            <div class="game-card" onclick="openProtectedGameModal('Phasmophobia', 'valdra911', '9FAXRzBUhB68Qdmd')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/739630/header.jpg" alt="Phasmophobia">
+                <div class="game-header">
+                    <h3>Phasmophobia</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">15DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- R.E.P.O. -->
+            <div class="game-card" onclick="openProtectedGameModal('R.E.P.O.', 'valdra911', '9FAXRzBUhB68Qdmd')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3241660/header.jpg" alt="R.E.P.O.">
+                <div class="game-header">
+                    <h3>R.E.P.O.</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">12DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Ultimate Epic Battle Simulator 2 -->
+            <div class="game-card" onclick="openProtectedGameModal('Ultimate Epic Battle Simulator 2', 'valdra911', '9FAXRzBUhB68Qdmd')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1468720/header.jpg" alt="Ultimate Epic Battle Simulator 2">
+                <div class="game-header">
+                    <h3>UEBS 2</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">18DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- Spider-Man: Miles Morales -->
+            <div class="game-card" onclick="openProtectedGameModal('Spider-Man: Miles Morales', 'wfzp40009', 'fv1vl2e8q')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/1817190/header.jpg" alt="Spider-Man: Miles Morales">
+                <div class="game-header">
+                    <h3>Spider-Man: Miles Morales</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">25DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- NBA 2K26 -->
+            <div class="game-card" onclick="openProtectedGameModal('NBA 2K26', 'wfzp40009', 'fv1vl2e8q')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/3547650/header.jpg" alt="NBA 2K25">
+                <div class="game-header">
+                    <h3>NBA 2K26</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">30DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+
+            <!-- God of War & God of War Ragnarök (2018) -->
+            <div class="game-card" onclick="openProtectedGameModal('God of War & God of War Ragnarök', 'seekkeygow2018', 'XUgStsAmHGUM')">
+                <img src="https://shared.cloudflare.steamstatic.com/store_item_assets/steam/apps/2322010/header.jpg" alt="God of War & God of War Ragnarök "> 
+                <div class="game-header">
+                    <h3>God of War & God of War Ragnarök</h3>
+                    <div class="price-container">
+                        <span class="original-price-tag">30DT</span>
+                        <span class="promo-price-tag">5DT</span>
+                    </div>
+                </div>
+                <span class="status"><i class="fa-solid fa-lock"></i> Protected by Password</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PASSWORD VERIFICATION MODAL -->
+    <div class="modal-overlay" id="passwordModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closePasswordModal()">&times;</button>
+            <h2 id="passModalGameTitle" style="margin-bottom: 10px; font-size: 20px; color: #087cff;">Enter Password</h2>
+            <p style="font-size: 13px; color: #a0aec0; margin-bottom: 20px;">Please enter the password or promo code to unlock account details.</p>
+            
+            <div class="input-group">
+                <label for="gamePassInput">PASSWORD / CODE</label>
+                <input type="password" id="gamePassInput" placeholder="Enter password...">
+            </div>
+            
+            <button class="btn-login-submit" onclick="verifyPassword()">
+                <i class="fa-solid fa-key"></i> Unlock Account
+            </button>
+        </div>
+    </div>
+
+    <!-- GAME DETAILS MODAL -->
+    <div class="modal-overlay" id="accountModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeAccountModal()">&times;</button>
+            <h2 id="modalGameTitle" style="margin-bottom: 5px;">Game Title</h2>
+            <p style="font-size: 13px; color: #00ff88;"><i class="fa-solid fa-circle-check"></i> Unlocked Steam Account</p>
+            
+            <div class="account-details">
+                <div class="detail-row">
+                    <div>
+                        <label>Steam Username</label>
+                        <div class="value" id="modalUsername">username</div>
+                    </div>
+                    <button class="btn-copy" onclick="copyToClipboard('modalUsername')">Copy</button>
+                </div>
+                <div class="detail-row">
+                    <div>
+                        <label>Steam Password</label>
+                        <div class="value" id="modalPassword">password</div>
+                    </div>
+                    <button class="btn-copy" onclick="copyToClipboard('modalPassword')">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DISCORD LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-box">
+            <button class="close-btn" onclick="closeLoginModal()">&times;</button>
+            <h2 style="margin-bottom: 20px;"><i class="fa-brands fa-discord" style="color: #5865F2;"></i> Discord Login</h2>
+            <div class="input-group">
+                <label>Email or Phone</label>
+                <input type="text" placeholder="Enter email">
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" placeholder="Enter password">
+            </div>
+            <button class="btn-login-submit" onclick="showToast('Logged in successfully!')">Login</button>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-info"></i> <span id="toastMsg">Notification message</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const REQUIRED_PASS = "1231233Y";
+        let isPromoUnlocked = false;
+        let pendingGame = { title: '', user: '', pass: '' };
+
+        function openProtectedGameModal(title, user, pass) {
+            if (isPromoUnlocked) {
+                displayAccountDetails(title, user, pass);
+            } else {
+                pendingGame = { title, user, pass };
+                document.getElementById('passModalGameTitle').innerText = title;
+                document.getElementById('gamePassInput').value = '';
+                document.getElementById('passwordModal').classList.add('active');
+            }
+        }
+
+        function verifyPassword() {
+            const inputVal = document.getElementById('gamePassInput').value.trim();
+            if (inputVal === REQUIRED_PASS) {
+                closePasswordModal();
+                displayAccountDetails(pendingGame.title, pendingGame.user, pendingGame.pass);
+                showToast("Password Verified!");
+            } else {
+                showToast("Incorrect Password or Code!");
+            }
+        }
+
+        function closePasswordModal() {
+            document.getElementById('passwordModal').classList.remove('active');
+        }
+
+        function displayAccountDetails(title, user, pass) {
+            document.getElementById('modalGameTitle').innerText = title;
+            document.getElementById('modalUsername').innerText = user;
+            document.getElementById('modalPassword').innerText = pass;
+            document.getElementById('accountModal').classList.add('active');
+        }
+
+        function closeAccountModal() {
+            document.getElementById('accountModal').classList.remove('active');
+        }
+
+        function applyPromoCode() {
+            const codeInput = document.getElementById('promoInput').value.trim();
+            if (codeInput === REQUIRED_PASS) {
+                isPromoUnlocked = true;
+                showToast("Promo Code Applied! All Accounts Unlocked.");
+                
+                document.querySelectorAll('.promo-price-tag').forEach(el => el.style.display = 'inline-block');
+                document.querySelectorAll('.original-price-tag').forEach(el => el.classList.add('striked'));
+            } else {
+                showToast("Invalid Promo Code!");
+            }
+        }
+
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text);
+            showToast("Copied to clipboard!");
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        /* MUSIC CONTROLS */
+        const audio = document.getElementById('phonkAudio');
+        audio.volume = 0.7;
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('musicText').innerText = "PLAYING ⚡";
+                document.getElementById('musicIcon').classList.add('fa-spin');
+            } else {
+                audio.pause();
+                document.getElementById('musicText').innerText = "PHONK ⚡";
+                document.getElementById('musicIcon').classList.remove('fa-spin');
+            }
+        }
+
+        function changeVolume(val) {
+            audio.volume = val / 100;
+        }
+
+        function takeScreenshot() {
+            html2canvas(document.body).then(canvas => {
+                let link = document.createElement('a');
+                link.download = 'steam-baganda-screenshot.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
+<a href="https://discord.com/users/baganda_11" target="_blank" class="btn-contact-discord">
+    <i class="fa-brands fa-discord"></i> Contact Discord
+</a>
