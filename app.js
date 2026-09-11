@@ -106,3 +106,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 });
+// Empêcher Ctrl+U, F12, et Clic Droit
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+document.addEventListener('keydown', e => {
+    // Bloquer Ctrl + U
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+        e.preventDefault();
+        return false;
+    }
+    // Bloquer F12 (Inspecter)
+    if (e.key === 'F12') {
+        e.preventDefault();
+        return false;
+    }
+    // Bloquer Ctrl + Shift + I / C / J
+    if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J')) {
+        e.preventDefault();
+        return false;
+    }
+});
